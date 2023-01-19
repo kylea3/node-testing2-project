@@ -1,22 +1,15 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
 exports.up = function(knex) {
-  knex.schema.table('players', function(table) {
-    table.increments()
-    table.string('fullname')
+  return knex.schema
+    .createTable('players', function(players) {
+    players.increments()
+    players.string('fullname')
         .notNullable()
-    table.integer('number')
+    players.integer('number')
         .notNullable()
   })
 };
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
 exports.down = function(knex) {
  return knex.schema
-    .dropTableIfExists('users')
+    .dropTableIfExists('players')
   }

@@ -10,7 +10,7 @@ module.exports = {
 };
 
 function get() {
-  return db('users');
+  return db('players');
 }
 
 function getById(id) {

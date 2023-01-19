@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   // RETURN AN ARRAY WITH ALL THE USERS
-  User.get()
+  Player.get()
     .then(user => {
       res.status(200).json(user)
     })
