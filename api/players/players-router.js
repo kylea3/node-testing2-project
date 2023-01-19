@@ -18,9 +18,10 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   // RETURN THE NEWLY CREATED USER OBJECT
   // this needs a middleware to check that the request body is valid
-  User.insert({ name: req.name })
-    .then(user => {
-      res.status(201).json(user)
+  console.log(req.body)
+  Player.insert({ fullname: req.body.fullname, number: req.body.number })
+    .then(player => {
+      res.status(201).json(player)
     })
     .catch(err => {
       res.status(500).json({ message: "something happened with the server"})

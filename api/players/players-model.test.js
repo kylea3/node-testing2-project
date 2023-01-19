@@ -21,13 +21,28 @@ describe('get function', () => {
     it('gets all players from db', async () => {
         const players = await db('players');
         expect(players).toHaveLength(3)
-        expect(players[0].fullname).toBe('Ozzie Albies')
     })
     it('gets correct player in first position', async () => {
         const players = await db('players');
         expect(players[0].fullname).toBe('Ozzie Albies')
     })
     
+})
+
+describe('post function', () => {
+    it('insert new player into db', async () => {
+        await db('players').insert({ fullname: 'Ronald Acuna Jr', number: 13});
+        const players = await db('players')
+        expect(players).toHaveLength(4)
+        expect(players[3].fullname).toBe('Ronald Acuna Jr')
+    })
+    it('gets correct number of added player', async () => {
+        await db('players').insert({ fullname: 'Ronald Acuna Jr', number: 13});
+        const players = await db('players')
+        expect(players).toHaveLength(4)
+        expect(players[3].number).toBe(13)
+    })
+
 })
 
 })
